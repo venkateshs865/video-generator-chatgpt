@@ -1,0 +1,41 @@
+Class: ElevenLabsApi
+__construct(string $apiKey, ?GuzzleHttp\Client $client)
+getHistory(): GuzzleHttp\Psr7\Response
+getAudioFromHistoryItem(string $historyItemId): GuzzleHttp\Psr7\Response
+deleteHistoryItems(array $historyItemIds): GuzzleHttp\Psr7\Response
+deleteHistoryItem(string $historyItemId): GuzzleHttp\Psr7\Response
+downloadHistoryItems(array $historyItemIds): GuzzleHttp\Psr7\Response
+textToSpeech(string $voiceId, array $data): GuzzleHttp\Psr7\Response
+textToSpeechWithVoiceId(string $voiceId, array $data): GuzzleHttp\Psr7\Response
+deleteSample(string $voiceId, string $sampleId): GuzzleHttp\Psr7\Response
+getAudioFromSample(string $voiceId, string $sampleId): GuzzleHttp\Psr7\Response
+deleteHistoryItemById(string $historyItemId): GuzzleHttp\Psr7\Response
+downloadHistoryItemsByIds(array $historyItemIds): GuzzleHttp\Psr7\Response
+getGeneratedItems(): GuzzleHttp\Psr7\Response
+getAudioFromHistoryItemById(string $historyItemId): GuzzleHttp\Psr7\Response
+deleteHistoryItemsByIds(array $historyItemIds): GuzzleHttp\Psr7\Response
+
+Class: AppConfig
+__construct(Psr\Log\LoggerInterface $logger)
+getApiKey(string $className): string
+
+Class: MeltProject
+__construct(Monolog\Logger $log, int $width, int $height, int $frameRateNum, int $frameRateDen, string $outputFile)
+__toString(): string
+addImage(string $path, int $in, int $out): void
+setVoiceover(string $path): void
+generateXml(): DOMDocument
+createTractorElement(DOMDocument $xml, string $id): DOMElement
+createTrackElement(DOMDocument $xml, string $producerId): DOMElement
+save(DOMDocument $xml, string $path): bool
+
+Class: VoiceGenerator
+__construct(ElevenLabsApi $elevenLabsApi)
+generate_and_download(string $voiceId, string $message): string
+
+Class: OpenAI
+__construct(string $api_key, ?GuzzleHttp\Client $client, ?Psr\Log\LoggerInterface $log)
+generateImage(string $prompt, string $localDirectory, string $size, int $n): ?array
+generateScript(string $role, string $prompt, int $maxTokens, float $temperature): ?string
+generateImageVariations(string $imagePath, string $localDirectory, int $n, string $size): ?array
+

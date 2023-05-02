@@ -1,0 +1,41 @@
+# .gitignore
+
+# General
+/.idea
+/.vscode
+/.DS_Store
+
+# Composer dependencies
+/vendor
+
+# PHPUnit
+/phpunit.xml
+/phpunit.xml.dist
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Configuration
+config/config.json
+
+# Generated files
+voices/*
+minified/*
+images/*
+image_prompts/*
+scripts/*
+*.mp4
+scene.xml
+
+# Logs
+*.log
+
+# PHP cache files
+*.php~
+*.swp
+*.swo
+
+# PHPUnit code coverage
+coverage/
